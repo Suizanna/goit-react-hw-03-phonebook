@@ -29,6 +29,8 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log('App componentDidUpdate');
+    console.log(prevState, 'prevState - до обновления контента');
+    console.log(this.state, 'this.state - после обновления контента');
 
     const nextContacts = this.state.contacts;
     const prevContacts = prevState.contacts;
