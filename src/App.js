@@ -45,11 +45,14 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-  };
+  }; 
 
   handleAddContact = e => {
     e.preventDefault();
-    if (this.state.contacts.some(el => el.name === this.state.name)) {
+   const { name, number, contacts } = this.state;
+    if (contacts.some(el => el.name === name)||
+        contacts.some((el) => el.number === number)
+       ) {
       alert(` ${this.state.name} is already in contacts!`);
       return;
     }
@@ -76,6 +79,12 @@ class App extends Component {
       [e.target.name]: e.target.value,
     });
   };
+  
+  // handleChangeFilter = e => {
+  //   this.setState({
+  //     filter: e.target.value,
+  //   });
+  // };
 
   render() {
     const contacts = filterContacts(this.state.contacts, this.state.filter);
